@@ -1,0 +1,97 @@
+/* General container styling */
+.frequent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9; /* Light background */
+    font-family: Arial, sans-serif;
+    gap: 40px;
+}
+
+/* FAQ header section */
+.frequency {
+    flex: 1;
+    text-align: left;
+    max-width: 500px;
+    padding: 5px;
+    margin-left: 30px;
+}
+
+.frequency h1 {
+    font-size: 3rem;
+    color: #0e7ca8;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.frequency p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.frequency img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    
+}
+
+/* Questions container */
+.questions {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+
+/* Style for the dropdown */
+.questions select {
+    width: 100%;
+    padding: 30px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.questions select:hover {
+    border-color: #007bff;
+}
+
+/* Focus effect */
+.questions select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+@media (max-width: 900px) {
+    .frequent {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .frequency, .questions {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .frequency img {
+        margin-top: 10px;
+    }
+
+    .questions select {
+        font-size: 0.9rem;
+    }
+}

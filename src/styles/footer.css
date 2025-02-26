@@ -1,0 +1,98 @@
+/* Footer General Styling */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color:  #197295;  /* Dark background */
+    color: #fff;
+    padding: 50px 20px;
+    font-family: Arial, sans-serif;
+    gap: 30px;
+}
+
+/* Footer Sections */
+.phase1, .phase2, .phase3, .phase4 {
+    flex: 1;
+    min-width: 220px;
+    max-width: 300px;
+}
+
+.footer b {
+    font-size: 1.2rem;
+    color: #fff;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin: 5px 0;
+}
+
+/* Social Media Icons */
+.icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.icons img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icons img:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Newsletter Subscription */
+.subscribe {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.subscribe input[type="email"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.subscribe input[type="submit"] {
+    background-color: #03b8ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.subscribe input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .icons {
+        justify-content: center;
+    }
+
+    .subscribe {
+        justify-content: center;
+    }
+}

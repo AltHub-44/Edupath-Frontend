@@ -1,0 +1,94 @@
+/* General container styling */
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 40px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    gap: 50px;
+}
+
+/* Left side - Contact information */
+.side1 {
+    flex: 1;
+    max-width: 500px;
+}
+
+.side1 p {
+    font-size: 1.2rem;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.side1 h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Contact details (phone & email) */
+.call, .mail {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.call:hover, .mail:hover {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+}
+
+.call img, .mail img {
+    width: 30px;
+    height: 30px;
+}
+
+.call span, .mail span {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* Right side - Contact Image */
+.side2 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.side2 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .contact {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .side1, .side2 {
+        max-width: 100%;
+    }
+
+    .side1 h3 {
+        font-size: 1.5rem;
+    }
+
+    .call, .mail {
+        justify-content: center;
+    }
+}
