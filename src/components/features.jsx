@@ -3,14 +3,16 @@ import icon from '../assets/icon.png';
 import icon1 from '../assets/icon1.png'; 
 import icon2 from '../assets/icon2.png'; 
 import icon3 from '../assets/icon3.png'; 
+import PropTypes from 'prop-types';
 
 
-const Features = () => (
-  <div className="features">
-    <div className="heading">
+const Features = ({ aboutRef }) => (
+  <div className="features" ref={aboutRef} id="about">
+    <section className="heading">
         <h1>Our Features</h1>
         <h4>How we help you succeed</h4>
-    </div>
+    </section>
+
 
     <div className="grid">
         <div className="layer1">
@@ -66,5 +68,9 @@ const Features = () => (
 
   </div>
 );
+
+Features.propTypes = {
+  aboutRef: PropTypes.object.isRequired,
+};
 
 export default Features;

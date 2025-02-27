@@ -20,7 +20,7 @@ header {
 }
 
 
-.logo img{
+.logo img {
   width: 200px;
 }
 
@@ -31,15 +31,20 @@ header {
   gap: 20px;
 }
 
-.nav-links li a {
-  text-decoration: none;
+
+/* Style for Navbar Buttons */
+.nav-links li button {
+  background: none;
+  border: none; /* No border */
   color: #333333;
   font-size: 1rem;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
-  color: #007bff;
+.nav-links li button:hover {
+  color: #007bff; /* Blue on hover */
+
 }
 
 /* Authentication Buttons */

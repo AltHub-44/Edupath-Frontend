@@ -4,13 +4,13 @@ import facebookIcon from '../assets/facebook.png';
 import webIcon from '../assets/web.png'; 
 import instaIcon from '../assets/insta.png'; 
 import youtubeIcon from '../assets/youtube.png'; 
+import PropTypes from 'prop-types';
 
-
-
-const Footer = () => (
+const Footer = ({ contactRef }) => (
   <div className="footer">
     
-   <div className='phase1'>
+   <section className='phase1' ref={contactRef} id="contact">
+
     <b>Edupah</b>
     <p>© 2024 Edupath</p>
     <p>All rights</p>
@@ -22,7 +22,8 @@ const Footer = () => (
         <img src={instaIcon} alt="instagram" />
         <img src={youtubeIcon} alt="youtube" />
     </div>
-   </div>
+   </section>
+
 
 
    <div className='phase2'>
@@ -54,5 +55,11 @@ const Footer = () => (
 
   </div>
 );
+
+
+Footer.propTypes = {
+  contactRef: PropTypes.object.isRequired,
+};
+
 
 export default Footer;
