@@ -3,8 +3,10 @@
 import "../styles/header.css";
 import logo from "../assets/logo.png";
 import PropTypes from 'prop-types';
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ scrollToSection }) => {
+  const navigate = useNavigate(); //  Get navigate function
   return (
     <header>
       <nav className="navbar">
@@ -17,7 +19,7 @@ const Header = ({ scrollToSection }) => {
           <li><button onClick={() => scrollToSection("contact")}>Contact Us</button></li>
         </ul>
         <div className="auth-buttons">
-        <button className="login">Login</button>
+        <button  className="login" onClick={() => navigate("/login")}>Login</button>
         <button className="get-started">Get Started →</button>
       </div>
       </nav>

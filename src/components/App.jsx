@@ -1,6 +1,6 @@
-
 import '../styles/App.css';
 import { useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./header.jsx";
 import Hero from "./hero.jsx";
 import Features from "./features.jsx";
@@ -9,34 +9,50 @@ import Faqs from "./faqs.jsx";
 import Contact from "./contact.jsx";
 import Footer from "./footer.jsx";
 import ScrollToTop from "./scrollToTop";
+import Login from "../auth/login"; 
+import SignUp from "../auth/signUp";
 
-
-function App() {
+function LandingPage() {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
 
-  const scrollToSection = (section) => {
-    const refs = { home: homeRef, about: aboutRef, contact: contactRef };
-    refs[section]?.current?.scrollIntoView({ behavior: "smooth" });
+  // Function to handle smooth scrolling
+  const scrollToSection = (sectionId) => {
+    const sectionMap = {
+      home: homeRef,
+      about: aboutRef,
+      contact: contactRef,
+    };
+
+    const section = sectionMap[sectionId]?.current;
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
+
   return (
-   
     <div ref={homeRef}>
       <Header scrollToSection={scrollToSection} />
       <Hero />
       <Features aboutRef={aboutRef} />
-      <Testimonials/>
-      <Faqs/>
-      <Contact/>
+      <Testimonials />
+      <Faqs />
+      <Contact />
       <Footer contactRef={contactRef} />
-      <ScrollToTop /> 
+      <ScrollToTop />
     </div>
-    
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} /> 
+    </Routes>
   );
 }
 
 export default App;
-
-
-
