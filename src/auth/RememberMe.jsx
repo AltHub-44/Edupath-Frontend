@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles-Auth/rememberMe.css"; // Ensure you have the correct path
+import '../styles/auth/rememberMe.css';
 
 const RememberMe = () => {
   const [isChecked, setIsChecked] = useState(false);

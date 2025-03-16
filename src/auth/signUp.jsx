@@ -1,6 +1,6 @@
 // SignUp.js
 import { useState } from 'react';
-import '../styles-auth/signUp.css';
+import '../styles/auth/signUp.css';
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import signUp from "../assets/signup.png";
