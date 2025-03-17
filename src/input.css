@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-white100: #F5F5F5;
+  --color-red50: #D93F21;
+  --color-blue200: #0067a2;
+  --color-blue100: #3b82f6;
+  --color-green100: #34D933;
+  --color-gray10: #FFF2F2;
+  --color-gray50: #F0F2F5;
+  --color-gray100: #e6e6e6;
+  --color-gray200: #5c5c5c;
+  --color-gray300: #6c757d;
+  --font-epilogue: "epilogue", sans-serif;
+  --font-inter: "epilogue", sans-serif;
+  --font-poppins: "epilogue", sans-serif;
+}
