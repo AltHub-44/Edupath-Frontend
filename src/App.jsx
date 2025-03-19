@@ -7,8 +7,8 @@ import DashboardLayout from "./pages/dashboard/DashboardLayout.jsx";
 import Dashboard from "./pages/dashboard/index/Dashboard.jsx";
 import Mentor from "./pages/dashboard/Mentor/Mentor.jsx";
 import Mentra from "./pages/dashboard/Mentra/Mentra.jsx";
-import Path from "./pages/dashboard/Path/Path.jsx";
 import Settings from "./pages/dashboard/settings/Settings.jsx";
+import Path from "./pages/yourPath/Path.jsx";
 
 function App() {
   return (
