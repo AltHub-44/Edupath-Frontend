@@ -37,7 +37,7 @@ const Login = () => {
       console.log(data);
       toast.success("Login successful!");
       reset();
-      navigate("/");
+      navigate("/dashboard");
     },
     onError: (error) => {
       const errorMessage =
