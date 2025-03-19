@@ -34,7 +34,7 @@ const taskStyles = {
 const Dashboard = () => {
   return (
     <div>
-      <main className="px-4 sm:px-6 lg:pr-8 mt-6">
+      <main className="px-4 sm:px-6 lg:pr-8 mt-4">
         <section className="flex flex-col lg:flex-row justify-between items-center bg-green200 rounded-2xl py-6 px-6 sm:px-8">
           <div className="text-white text-left">
             <h4 className="text-lg">Welcome 👋</h4>

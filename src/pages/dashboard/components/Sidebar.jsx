@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black/60 bg-opacity-20 backdrop-blur-md transition-opacity duration-300 z-40 md:hidden ${
+        className={`fixed inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-300 z-40 md:hidden ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -29,9 +29,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       ></div>
 
       <nav
-        className={`fixed top-0 right-0 min-h-screen w-64 bg-blue-600 text-white p-6 transform transition-transform duration-300 z-50
+        className={`fixed top-0 right-0 h-screen w-64 bg-blue-600 text-white p-6 transform transition-transform duration-300 z-50
           ${isOpen ? "translate-x-0" : "translate-x-full"}
-          md:translate-x-0 md:relative md:flex md:flex-col`}
+          md:translate-x-0 md:relative md:flex md:flex-col md:w-64  md:left-0`}
       >
         <button
           className="absolute top-4 right-4 p-2 rounded-full bg-white text-gray-800 hover:bg-gray-200 transition md:hidden"

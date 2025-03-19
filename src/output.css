@@ -689,6 +689,9 @@
   .bg-black\/20 {
     background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
   }
+  .bg-black\/40 {
+    background-color: color-mix(in oklab, var(--color-black) 40%, transparent);
+  }
   .bg-black\/50 {
     background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
   }
@@ -1224,9 +1227,19 @@
       line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
+  .md\:fixed {
+    @media (width >= 48rem) {
+      position: fixed;
+    }
+  }
   .md\:relative {
     @media (width >= 48rem) {
       position: relative;
+    }
+  }
+  .md\:left-0 {
+    @media (width >= 48rem) {
+      left: calc(var(--spacing) * 0);
     }
   }
   .md\:my-3 {
@@ -1282,6 +1295,11 @@
   .md\:w-9\/12 {
     @media (width >= 48rem) {
       width: calc(9/12 * 100%);
+    }
+  }
+  .md\:w-64 {
+    @media (width >= 48rem) {
+      width: calc(var(--spacing) * 64);
     }
   }
   .md\:translate-x-0 {
