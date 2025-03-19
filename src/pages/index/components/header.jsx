@@ -1,30 +1,10 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import logo from "@/assets/logo.png";
+import useMenu from "../../../hooks/useMenu";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-  }, [menuOpen]);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false);
-    }
-  };
+  const { menuOpen, toggleMenu, scrollToSection } = useMenu();
 
   return (
     <header className="relative">

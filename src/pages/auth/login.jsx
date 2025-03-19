@@ -1,25 +1,57 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import { Icon } from "@iconify/react";
 import logo from "@/assets/logo.png";
 import loginPic from "@/assets/login.png";
-import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react";
+import { loginUser } from "../../api/authApi";
+
+const loginSchema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Email:", email, "Password:", password);
+  const mutation = useMutation({
+    mutationFn: loginUser,
+    onSuccess: (data) => {
+      console.log(data);
+      toast.success("Login successful!");
+      reset();
+      navigate("/");
+    },
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Login failed. Check credentials.";
+      toast.error(errorMessage);
+    },
+  });
+
+  const onSubmit = (data) => {
+    mutation.mutate(data);
   };
 
   return (
-    <div className="relative flex flex-col lg:flex-row bg-gray50 md:h-screen">
+    <div className="relative flex flex-col lg:flex-row bg-gray-50 md:h-screen">
       <Link
         to="/"
         className="absolute hover:text-blue100 top-10 left-5 flex items-center space-x-2"
@@ -33,33 +65,29 @@ const Login = () => {
             <img src={logo} alt="logo" className="h-24 w-auto" />
             <p className="-mt-6">Login into your account</p>
           </div>
-          <form onSubmit={handleSubmit} className="mt-20">
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-10">
             <div>
               <input
-                id="email"
+                {...register("email")}
                 type="email"
                 placeholder="Email"
-                value={email}
-                className="w-full text-sm px-4 bg-white border border-gray100 shadow-sm shadow-gray100 py-5 rounded-md"
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                className="w-full text-sm px-4 bg-white border border-gray-100 shadow-sm py-5 rounded-md"
               />
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email?.message}
+              </p>
             </div>
 
-            <div className="mt-8 relative">
+            <div className="mt-4 relative">
               <input
-                id="password"
+                {...register("password")}
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full text-sm px-4 bg-white border border-gray100 shadow-sm shadow-gray100 py-5 rounded-md pr-12"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
+                className="w-full text-sm px-4 bg-white border border-gray-100 shadow-sm py-5 rounded-md pr-12"
               />
-
               <button
                 type="button"
-                onClick={togglePasswordVisibility}
+                onClick={() => setShowPassword(!showPassword)}
                 className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
               >
                 <Icon
@@ -67,41 +95,40 @@ const Login = () => {
                   className="text-xl"
                 />
               </button>
+              <p className="text-red-500 text-xs mt-1">
+                {errors.password?.message}
+              </p>
             </div>
 
-            {/* Remember Me & Recover Password */}
             <div className="flex justify-between text-sm mt-7">
-              <label
-                htmlFor="remember"
-                className="flex items-center cursor-pointer"
-              >
+              <label className="flex items-center cursor-pointer">
                 <input
                   type="checkbox"
-                  id="remember"
-                  className="w-4 h-4 text-blue-500 border-gray100 rounded focus:ring-blue-500"
+                  className="w-4 h-4 text-blue-500 border-gray-100 rounded focus:ring-blue-500"
                 />
                 <span className="ml-2 text-gray-700">Remember me</span>
               </label>
               <Link
                 to="/forgot-password"
-                className="text-red50 hover:text-blue100"
+                className="text-red-500 hover:text-blue-500"
               >
                 Recover password
               </Link>
             </div>
 
-            {/* Login Button */}
             <button
               type="submit"
-              className="block cursor-pointer hover:bg-blue100 hover:text-white mt-10 border border-gray300 rounded-md py-2 text-center w-full"
+              disabled={mutation.isPending}
+              className="block cursor-pointer mt-6 border border-gray-300 rounded-md py-3 text-center w-full 
+              hover:bg-blue-500 hover:text-white disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
-              Login
+              {mutation.isPending ? "Logging in..." : "Login"}
             </button>
           </form>
 
           <div className="flex items-center gap-3 text-sm mt-6">
             <span>Do not have an account?</span>
-            <Link to="/signup" className="text-blue100">
+            <Link to="/signup" className="text-blue-500">
               Sign up
             </Link>
           </div>
