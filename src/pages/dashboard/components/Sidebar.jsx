@@ -42,7 +42,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         <h1 className="text-2xl font-bold mb-8 mt-6">EDUPATH</h1>
 
-        <ul className="space-y-10 mt-20">
+        <ul className="flex flex-col gap-10 mt-20">
           {navItems.map(({ to, icon, label }) => (
             <li key={to}>
               <Link

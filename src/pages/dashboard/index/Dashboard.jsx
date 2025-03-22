@@ -76,7 +76,7 @@ const Dashboard = () => {
 
             <div className="bg-blue400 text-white mt-4 p-3 rounded-lg">
               <h3 className="font-epilogue">Kickstart Your Learning</h3>
-              <ul className="mt-3 space-y-3">
+              <ul className="mt-3 flex flex-col gap-5">
                 {tasks.map((task) => {
                   const { bgColor, icon } = taskStyles[task.type] || {};
                   return (
