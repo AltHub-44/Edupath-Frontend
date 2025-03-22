@@ -2,9 +2,14 @@ import PropTypes from "prop-types";
 import profileImage from "@/assets/mitchelle.png";
 import { getCurrentDate } from "@/utils/getCurrentDate";
 import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ toggleSidebar }) => {
   const currentDate = getCurrentDate();
+  const navigate = useNavigate();
+  const goToSettings = () => {
+    navigate("/dashboard/settings");
+  };
 
   return (
     <div className="flex items-center justify-between bg-white px-6 py-5 rounded-bl-2xl">
@@ -21,7 +26,8 @@ const Header = ({ toggleSidebar }) => {
         <img
           src={profileImage}
           alt="Profile"
-          className="w-10 h-10 rounded-full"
+          className="w-10 h-10 rounded-full cursor-pointer"
+          onClick={goToSettings}
         />
 
         <button className="md:hidden p-2" onClick={toggleSidebar}>

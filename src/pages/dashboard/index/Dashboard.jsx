@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import Header from "../components/header";
 import brainImage from "@/assets/brain.png";
 import mentra from "@/assets/mentra.png";
 
@@ -9,19 +8,19 @@ const tasks = [
     id: 1,
     text: "Watch a video on fractions before Friday",
     type: "video",
-    link: "/tasks/video/1",
+    link: "path",
   },
   {
     id: 2,
     text: "Answer 3 quiz questions about basic algebra",
     type: "quiz",
-    link: "/tasks/quiz/2",
+    link: "path",
   },
   {
     id: 3,
     text: "Read an article on problem-solving strategies and summarize it",
     type: "article",
-    link: "/tasks/article/3",
+    link: "path",
   },
 ];
 
@@ -66,7 +65,7 @@ const Dashboard = () => {
                   questions!
                 </p>
                 <Link
-                  to="/mentor"
+                  to="mentor"
                   className="mt-3 sm:mt-0 flex items-center gap-2 text-xs bg-red100 p-2 rounded"
                 >
                   <Icon icon="hugeicons:mentoring" className="text-lg" /> Go to
@@ -98,7 +97,7 @@ const Dashboard = () => {
               </ul>
               <div className="mt-4">
                 <Link
-                  to="/tasks"
+                  to="path"
                   className="inline-flex items-center gap-2 text-sm bg-red100 px-2 py-1 rounded"
                 >
                   <Icon icon="mdi:clipboard-list-outline" className="text-lg" />{" "}
@@ -120,7 +119,7 @@ const Dashboard = () => {
             </p>
             <div className="flex justify-center lg:justify-start">
               <Link
-                to="/mentra"
+                to="mentra"
                 className="inline-block text-center mt-6 text-sm px-3 bg-blue300 hover:bg-white hover:text-blue300 hover:border hover:border-blue300 text-white py-2 rounded"
               >
                 Chat With Mentra

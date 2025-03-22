@@ -8,7 +8,8 @@ import Dashboard from "./pages/dashboard/index/Dashboard.jsx";
 import Mentor from "./pages/dashboard/Mentor/Mentor.jsx";
 import Mentra from "./pages/dashboard/Mentra/Mentra.jsx";
 import Settings from "./pages/dashboard/settings/Settings.jsx";
-import Path from "./pages/yourPath/Path.jsx";
+import ChatPage from "./pages/dashboard/Mentor/components/ChatPage.jsx";
+import Path from "./pages/dashboard/yourPath/Path.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="mentor" element={<Mentor />} />
+        <Route path="mentor/chat" element={<ChatPage />} />
         <Route path="mentra" element={<Mentra />} />
         <Route path="path" element={<Path />} />
         <Route path="settings" element={<Settings />} />

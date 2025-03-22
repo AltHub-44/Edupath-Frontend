@@ -1,8 +1,8 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useState, useRef, useEffect } from "react";
-import mentra from "@/assets/mentra.png";
+import yusuf from "@/assets/yusuf.png";
 
-const MentraChat = () => {
+const ChatPage = () => {
   const [messages, setMessages] = useState([
     {
       id: "1",
@@ -65,10 +65,10 @@ const MentraChat = () => {
     <div className="flex flex-col h-screen bg-gray-50">
       <div className="bg-white p-4 flex items-center gap-3 ">
         <div className="flex items-center gap-3">
-          <img src={mentra} className="rounded-full h-14 w-14" alt="" />
+          <img src={yusuf} className="rounded-full h-14 w-14" alt="" />
           <div>
             <h2 className="text-lg font-semibold text-gray-900">
-              Mentra
+              Mr. Yusuf Adeola
             </h2>
             <p className="text-sm text-green-600">Online</p>
           </div>
@@ -121,4 +121,4 @@ const MentraChat = () => {
   );
 };
 
-export default MentraChat;
+export default ChatPage;
