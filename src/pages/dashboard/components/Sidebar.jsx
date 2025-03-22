@@ -1,9 +1,15 @@
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("authToken"); 
+    navigate("/"); 
+  };
 
   const navItems = [
     { to: "/dashboard", icon: "ic:round-dashboard", label: "Dashboard" },
@@ -61,13 +67,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           ))}
         </ul>
 
-        <Link
+        <button
+          onClick={logout}
           to="/"
           className="flex items-center gap-3 text-lg mt-32 hover:bg-white100 hover:text-black p-3 rounded-lg transition"
         >
           <Icon icon="ri:logout-circle-line" className="text-2xl" />
           Log out
-        </Link>
+        </button>
       </nav>
     </>
   );

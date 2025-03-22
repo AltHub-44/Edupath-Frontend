@@ -34,7 +34,9 @@ const Login = () => {
   const mutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      console.log(data);
+      if (data?.token) {
+        localStorage.setItem("authToken", data.token); // Store token
+      }
       toast.success("Login successful!");
       reset();
       navigate("/dashboard");
