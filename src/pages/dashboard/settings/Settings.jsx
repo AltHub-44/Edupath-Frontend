@@ -5,12 +5,12 @@ import getDecodedJWT from "../../../utils/decodeJwt";
 
 const SettingsPage = () => {
 
-  const [email, setEmail] = useState("bryan.cranston@mail.com");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const user = getDecodedJWT();
   const [firstName, setFirstName] = useState(user.firstname);
   const [lastName, setLastName] = useState(user.lastname);
+  const [email, setEmail] = useState(user.email);
 
   return (
       <div className="lg:px-4 sm:px-4 py-4  w-full">
