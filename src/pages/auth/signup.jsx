@@ -10,8 +10,6 @@ import { signupUser } from "../../api/authApi";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
-
-
 const signupSchema = yup.object().shape({
   firstName: yup.string().required("First Name is required"),
   lastName: yup.string().required("Last Name is required"),
@@ -44,9 +42,10 @@ const Signup = () => {
     mutationFn: signupUser,
     onSuccess: (data) => {
       console.log("Signup Successful:", data);
-      toast.success("Signup successful! Please log in.");
+      localStorage.setItem("authToken", data.token);
+      toast.success("Signup successful!");
       reset();
-      setTimeout(() => navigate("/login"), 2000);
+      setTimeout(() => navigate("/dashboard"), 2000);
     },
     onError: (error) => {
       const errorMessage =
@@ -56,7 +55,8 @@ const Signup = () => {
   });
 
   const onSubmit = (data) => {
-    mutation.mutate(data);
+    const { confirmPassword, ...userData } = data; 
+    mutation.mutate(userData);  
   };
   return (
     <div className="flex flex-col lg:flex-row bg-gray-50 h-screen">
