@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import brainImage from "@/assets/brain.png";
 import mentra from "@/assets/mentra.png";
+import capitalize from "@/utils/capitalize";
+import getDecodedJWT from "../../../utils/decodeJwt";
+
 
 const tasks = [
   {
@@ -30,14 +33,18 @@ const taskStyles = {
   article: { bgColor: "bg-[#F59E0B]", icon: "mdi:book-open" },
 };
 
+
 const Dashboard = () => {
+
+const user = getDecodedJWT();
+  
   return (
     <div>
       <main className="px-4 sm:px-6 lg:pr-8 mt-4">
         <section className="flex flex-col lg:flex-row justify-between items-center bg-green200 rounded-2xl py-6 px-6 sm:px-8">
           <div className="text-white text-left">
             <h4 className="text-lg">Welcome 👋</h4>
-            <h2 className="text-2xl sm:text-3xl mt-1">Mike Adewale</h2>
+            <h2 className="text-2xl sm:text-3xl mt-1">{capitalize(user.firstname)} {capitalize(user.lastname)}</h2>
             <p className="mt-6 text-base sm:text-lg">
               We are happy to have you onboard{" "}
             </p>

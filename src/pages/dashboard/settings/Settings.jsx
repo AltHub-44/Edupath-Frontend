@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import mitchelle from "@/assets/mitchelle.png";
+import getDecodedJWT from "../../../utils/decodeJwt";
 
 const SettingsPage = () => {
-  const [firstName, setFirstName] = useState("David");
-  const [lastName, setLastName] = useState("Damiete");
+
   const [email, setEmail] = useState("bryan.cranston@mail.com");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const user = getDecodedJWT();
+  const [firstName, setFirstName] = useState(user.firstname);
+  const [lastName, setLastName] = useState(user.lastname);
 
   return (
       <div className="lg:px-4 sm:px-4 py-4  w-full">
