@@ -21,7 +21,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
     { to: "/dashboard/mentra", icon: "majesticons:chat-line", label: "Mentra" },
     { to: "/dashboard/calendar", icon: "ep:calendar", label: "Calendar" },
-    { to: "/dashboard/assignments", icon: "hugeicons:assignments", label: "Assignments" },
+    {
+      to: "/dashboard/assignments",
+      icon: "hugeicons:assignments",
+      label: "Assignments",
+    },
   ];
 
   const secondaryNavItems = [
@@ -69,6 +73,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             {navItems.map((item) => (
               <li key={item.to}>
                 <Link
+                  onClick={toggleSidebar}
                   to={item.to}
                   className={`
                       flex items-center gap-3 py-3 text-white rounded-lg transition-colors", 
@@ -86,13 +91,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           </ul>
         </div>
         <div className="">
-          <p className="text-white/60 text-xs font-medium mb-2">
-            OTHER LINKS
-          </p>
+          <p className="text-white/60 text-xs font-medium mb-2">OTHER LINKS</p>
           <ul className="flex flex-col gap-3 mt-3">
             {secondaryNavItems.map((item) => (
               <li key={item.to}>
                 <Link
+                  onClick={toggleSidebar}
                   to={item.to}
                   className={`flex items-center gap-3 py-2.5 text-white/80 rounded-lg transition-colors", 
                       ${
