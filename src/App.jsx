@@ -17,6 +17,9 @@ import QuizPage from "./pages/dashboard/quiz/QuizPage.jsx";
 import LessonPage from "./pages/dashboard/Lesson/LessonPage.jsx";
 import Profile from "./pages/dashboard/settings/Settings.jsx";
 import Calendar from "./pages/dashboard/calendar/Calendar.jsx";
+import QuizzesPage from "./pages/dashboard/quiz/QuizzesPage.jsx";
+import Assignments from "./pages/dashboard/assignment/Assignment.jsx";
+import AssignmentDetailPage from "./pages/dashboard/assignment/components/AssignmentDetailsPage.jsx";
 
 function App() {
   return (
@@ -37,9 +40,13 @@ function App() {
           <Route path="lesson" element={<LessonPage />} />
           <Route path="article/:articleId" element={<ArticlePage />} />
           <Route path="quiz/:quizId" element={<QuizPage />} />
+          <Route path="quizzes" element={<QuizzesPage />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="profile" element={<Profile />} />
           <Route path="calendar" element={<Calendar />} />
+          <Route path="assignments" element={<Assignments />} />
+          <Route path="assignment/:assignmentId" element={<AssignmentDetailPage />} />
+
         </Route>
       </Route>
     </Routes>

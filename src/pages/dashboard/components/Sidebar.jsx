@@ -21,12 +21,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
     { to: "/dashboard/mentra", icon: "majesticons:chat-line", label: "Mentra" },
     { to: "/dashboard/calendar", icon: "ep:calendar", label: "Calendar" },
+    { to: "/dashboard/assignments", icon: "material-symbols-light:assignment-outline-sharp", label: "Assignments" },
   ];
 
   const secondaryNavItems = [
     { icon: "streamline:target", label: "Goals", to: "/dashboard/goals" },
     { icon: "ep:files", label: "Resources", to: "/dashboard/resources" },
-    { icon: "hugeicons:quiz-03", label: "Quizzes", to: "/dashboard/quiz/1" },
+    { icon: "hugeicons:quiz-03", label: "Quizzes", to: "/dashboard/quizzes" },
     {
       icon: "mynaui:notification-solid",
       label: "Notifications",
@@ -58,7 +59,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <Icon icon="mdi:close" className="text-2xl" />
         </button>
 
-        <h1 className="text-2xl font-bold mb-8 mt-6">EDUPATH</h1>
+        <h1 className="text-2xl font-bold mb-4 mt-6">EDUPATH</h1>
 
         <div className="mb-4 mt-3">
           <p className="text-white/60 text-xs font-medium  mb-2">
@@ -111,7 +112,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <button
           onClick={logout}
           to="/"
-          className="flex items-center gap-3 text-lg mt-8 hover:bg-white100 hover:text-black py-3 rounded-lg transition"
+          className="flex items-center gap-3 text-lg mt-2 hover:bg-white100 hover:text-black py-3 rounded-lg transition"
         >
           <Icon icon="ri:logout-circle-line" className="text-2xl" />
           Log out
