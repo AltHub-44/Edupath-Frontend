@@ -21,17 +21,18 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
     { to: "/dashboard/mentra", icon: "majesticons:chat-line", label: "Mentra" },
     { to: "/dashboard/calendar", icon: "ep:calendar", label: "Calendar" },
+  ];
+
+  const secondaryNavItems = [
+  
     {
       to: "/dashboard/assignments",
       icon: "hugeicons:assignments",
       label: "Assignments",
     },
-  ];
-
-  const secondaryNavItems = [
-    { icon: "streamline:target", label: "Goals", to: "/dashboard/goals" },
     { icon: "ep:files", label: "Resources", to: "/dashboard/resources" },
     { icon: "hugeicons:quiz-03", label: "Quizzes", to: "/dashboard/quizzes" },
+    { icon: "streamline:target", label: "Goals", to: "/dashboard/goals" },
     {
       icon: "mynaui:notification-solid",
       label: "Notifications",
