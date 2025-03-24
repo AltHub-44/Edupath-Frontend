@@ -104,15 +104,7 @@ const Assignments = () => {
               <h1 className="text-2xl font-bold">Assignments</h1>
               <p className="text-gray-500">{format(today, 'MMMM dd, yyyy')}</p>
             </div>
-            <div className="flex items-center gap-4">
-              <button className="relative p-2 rounded-full hover:bg-gray-100">
-                <Icon icon="tabler:bell" className="w-5 h-5" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-              </button>
-              <div className="h-10 w-10 rounded-full border border-gray-200 overflow-hidden">
-                <img src="/lovable-uploads/63aab59d-bddb-43b1-963c-ab6f53489f3e.png" alt="User" className="h-full w-full object-cover" />
-              </div>
-            </div>
+
           </div>
           
           {/* Statistics */}

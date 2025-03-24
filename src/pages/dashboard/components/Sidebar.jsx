@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
     { to: "/dashboard/mentra", icon: "majesticons:chat-line", label: "Mentra" },
     { to: "/dashboard/calendar", icon: "ep:calendar", label: "Calendar" },
-    { to: "/dashboard/assignments", icon: "material-symbols-light:assignment-outline-sharp", label: "Assignments" },
+    { to: "/dashboard/assignments", icon: "hugeicons:assignments", label: "Assignments" },
   ];
 
   const secondaryNavItems = [
@@ -97,8 +97,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                   className={`flex items-center gap-3 py-2.5 text-white/80 rounded-lg transition-colors", 
                       ${
                         location.pathname === item.to
-                          ? "bg-white/20 font-medium"
-                          : "hover:bg-white/10"
+                          ? "bg-white/20 font-medium px-3"
+                          : "hover:bg-white/10 hover:px-3"
                       }`}
                 >
                   <Icon icon={item.icon} className="h-5 w-auto" />
