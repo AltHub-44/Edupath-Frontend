@@ -7,8 +7,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
 
   const logout = () => {
-    localStorage.removeItem("authToken"); 
-    navigate("/"); 
+    localStorage.removeItem("authToken");
+    navigate("/");
   };
 
   const navItems = [
@@ -20,6 +20,18 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       label: "Your Path",
     },
     { to: "/dashboard/mentra", icon: "majesticons:chat-line", label: "Mentra" },
+  ];
+
+  const secondaryNavItems = [
+    { icon: "streamline:target", label: "Goals", to: "/dashboard/goals" },
+    { icon: "ep:files", label: "Resources", to: "/dashboard/resources" },
+    { icon: "hugeicons:quiz-03", label: "Quizzes", to: "/dashboard/quiz" },
+    {
+      icon: "mynaui:notification-solid",
+      label: "Notifications",
+      to: "/dashboard/notifications",
+    },
+    { icon: "solar:user-linear", label: "Profile", to: "/dashboard" },
     { to: "/dashboard/settings", icon: "mdi:cog-outline", label: "Settings" },
   ];
 
@@ -35,7 +47,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       ></div>
 
       <nav
-        className={`fixed top-0 right-0 h-screen w-64 bg-blue-600 text-white p-6 transform transition-transform duration-300 z-50
+        className={`fixed  top-0 right-0 h-screen w-64 bg-blue-600 text-white p-6 transform transition-transform duration-300 z-50
           ${isOpen ? "translate-x-0" : "translate-x-full"}
           md:translate-x-0 md:relative md:flex md:flex-col md:w-64  md:left-0`}
       >
@@ -48,29 +60,58 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         <h1 className="text-2xl font-bold mb-8 mt-6">EDUPATH</h1>
 
-        <ul className="flex flex-col gap-10 mt-20">
-          {navItems.map(({ to, icon, label }) => (
-            <li key={to}>
-              <Link
-                to={to}
-                onClick={toggleSidebar}
-                className={`flex items-center gap-3 text-lg p-3 rounded-lg transition ${
-                  location.pathname === to
-                    ? "bg-white text-black"
-                    : "hover:bg-white100 hover:text-black"
-                }`}
-              >
-                <Icon icon={icon} className="text-2xl" />
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="mb-4 mt-5">
+          <p className="text-white/60 text-xs font-medium  mb-2">
+            MAIN NAVIGATION
+          </p>
+          <ul className="space-y-2">
+            {navItems.map((item) => (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  className={`
+                      flex items-center gap-3 py-3 text-white rounded-lg transition-colors", 
+                      ${
+                        location.pathname === item.to
+                          ? "bg-white/20 font-medium px-3"
+                          : "hover:bg-white/10 hover:px-3"
+                      }`}
+                >
+                  <Icon icon={item.icon} className="h-5 w-auto" />
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="">
+          <p className="text-white/60 text-xs font-medium mb-2">
+            OTHER LINKS
+          </p>
+          <ul className="flex flex-col gap-3 mt-3">
+            {secondaryNavItems.map((item) => (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  className={`flex items-center gap-3 py-2.5 text-white/80 rounded-lg transition-colors", 
+                      ${
+                        location.pathname === item.to
+                          ? "bg-white/20 font-medium"
+                          : "hover:bg-white/10"
+                      }`}
+                >
+                  <Icon icon={item.icon} className="h-5 w-auto" />
+                  <span className="text-sm">{item.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <button
           onClick={logout}
           to="/"
-          className="flex items-center gap-3 text-lg mt-32 hover:bg-white100 hover:text-black p-3 rounded-lg transition"
+          className="flex items-center gap-3 text-lg mt-8 hover:bg-white100 hover:text-black py-3 rounded-lg transition"
         >
           <Icon icon="ri:logout-circle-line" className="text-2xl" />
           Log out
