@@ -77,7 +77,7 @@ const Path = () => {
             </p>
             <div className="mt-4">
               <Link
-                to="/quiz/1"
+                to="dashboard/quiz/1"
                 className="gap-2 font-epilogue text-sm inline-flex border border-gray100 py-2 px-2 rounded-md hover:bg-gray50"
               >
                 <Icon icon="mdi:quiz-outline" className="h-4 w-4" />
