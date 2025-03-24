@@ -25,7 +25,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const secondaryNavItems = [
     { icon: "streamline:target", label: "Goals", to: "/dashboard/goals" },
     { icon: "ep:files", label: "Resources", to: "/dashboard/resources" },
-    { icon: "hugeicons:quiz-03", label: "Quizzes", to: "/dashboard/quiz" },
+    { icon: "hugeicons:quiz-03", label: "Quizzes", to: "/dashboard/quiz/1" },
     {
       icon: "mynaui:notification-solid",
       label: "Notifications",
