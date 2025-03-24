@@ -20,6 +20,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       label: "Your Path",
     },
     { to: "/dashboard/mentra", icon: "majesticons:chat-line", label: "Mentra" },
+    { to: "/dashboard/calendar", icon: "ep:calendar", label: "Calendar" },
   ];
 
   const secondaryNavItems = [
@@ -31,8 +32,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       label: "Notifications",
       to: "/dashboard/notifications",
     },
-    { icon: "solar:user-linear", label: "Profile", to: "/dashboard" },
-    { to: "/dashboard/settings", icon: "mdi:cog-outline", label: "Settings" },
+    { icon: "solar:user-linear", label: "Profile", to: "/dashboard/profile" },
   ];
 
   return (
@@ -60,7 +60,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         <h1 className="text-2xl font-bold mb-8 mt-6">EDUPATH</h1>
 
-        <div className="mb-4 mt-5">
+        <div className="mb-4 mt-3">
           <p className="text-white/60 text-xs font-medium  mb-2">
             MAIN NAVIGATION
           </p>

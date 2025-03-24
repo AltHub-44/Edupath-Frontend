@@ -6,7 +6,6 @@ import DashboardLayout from "./pages/dashboard/DashboardLayout.jsx";
 import Dashboard from "./pages/dashboard/index/Dashboard.jsx";
 import Mentor from "./pages/dashboard/Mentor/Mentor.jsx";
 import Mentra from "./pages/dashboard/Mentra/Mentra.jsx";
-import Settings from "./pages/dashboard/settings/Settings.jsx";
 import ChatPage from "./pages/dashboard/Mentor/components/ChatPage.jsx";
 import Path from "./pages/dashboard/yourPath/Path.jsx";
 import PrivateRoute from "./pages/auth/PrivateRoute.jsx";
@@ -15,6 +14,9 @@ import Notifications from "./pages/dashboard/notifications/Notifications.jsx";
 import Resource from "./pages/dashboard/resources/Resource.jsx";
 import ArticlePage from "./pages/dashboard/Article/ArticlePage.jsx";
 import QuizPage from "./pages/dashboard/quiz/QuizPage.jsx";
+import LessonPage from "./pages/dashboard/Lesson/LessonPage.jsx";
+import Profile from "./pages/dashboard/settings/Settings.jsx";
+import Calendar from "./pages/dashboard/calendar/Calendar.jsx";
 
 function App() {
   return (
@@ -32,10 +34,12 @@ function App() {
           <Route path="path" element={<Path />} />
           <Route path="goals" element={<Goals />} />
           <Route path="resources" element={<Resource />} />
+          <Route path="lesson" element={<LessonPage />} />
           <Route path="article/:articleId" element={<ArticlePage />} />
           <Route path="quiz/:quizId" element={<QuizPage />} />
           <Route path="notifications" element={<Notifications />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="calendar" element={<Calendar />} />
         </Route>
       </Route>
     </Routes>

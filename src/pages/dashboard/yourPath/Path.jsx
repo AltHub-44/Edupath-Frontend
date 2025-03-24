@@ -161,7 +161,7 @@ const Path = () => {
                   View Lessons
                 </Link>
                 <Link
-                  to={`/quiz/${module.id}`}
+                  to={`/dashboard/quiz/${module.id}`}
                   className="gap-2 font-epilogue text-sm inline-flex  border border-gray100 py-2 px-2 rounded-md hover:bg-gray50"
                 >
                   <Icon icon="mdi:help-circle" className="h-4 w-4" />
