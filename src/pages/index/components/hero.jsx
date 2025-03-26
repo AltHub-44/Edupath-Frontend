@@ -1,22 +1,21 @@
-import heroImage from "@/assets/hero.png";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center mt-10 md:mt-20 px-4 md:px-6 lg:px-6">
+    <div className="flex flex-col lg:flex-row items-center px-4 pt-7 md:px-6 lg:p-20 lg:px-28 bg-[#eff4ff] rounded-lg">
       <div className="lg:w-6/12 ">
-        <h1 className="font-epilogue text-4xl md:text-5xl lg:text-6xl font-medium lg:pr-12 leading-12 md:leading-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-10 md:leading-12">
           Tailored learning path to boost{" "}
-          <strong className="text-blue100">academic success</strong>
+          <span className="text-blue-500">academic success</span>
         </h1>
-        <h3 className="text-xl md:text-2xl font-lighter text-gray200 lg:w-11/12 mt-5">
+        <h3 className="text-md md:text-lg font-lighter text-gray200 lg:w-11/12 mt-5">
           Your personalized guide to better learning, smarter decisions, and
           brighter careers
         </h3>
         <div className="lg:w-6/12 flex justify-center lg:justify-start items-center gap-2 md:gap-5 lg:gap-3 mt-10">
           <Link
             to="/signup"
-            className="bg-blue100 hover:bg-white hover:border hover:border-blue100 text-white hover:text-blue100 py-2 px-4 rounded-md"
+            className="bg-blue100 hover:bg-white hover:border hover:border-blue100 text-white hover:text-blue100 py-3 px-4 rounded-md"
           >
             Start your journey
           </Link>
@@ -30,7 +29,11 @@ const Hero = () => {
       </div>
 
       <div className="lg:w-6/12 mt-16 lg:mt-0">
-        <img src={heroImage} alt="Hero" className="w-full" />
+        <img
+          src="https://media.gettyimages.com/id/1403897263/photo/university-student-working-on-a-school-project-in-the-library.jpg?s=612x612&w=0&k=20&c=yjuNGT-WnQcpzJPXx45CEVLuKHKnaEEIOk7DhToHPGo="
+          alt="Hero"
+          className="w-full rounded-lg"
+        />
       </div>
     </div>
   );

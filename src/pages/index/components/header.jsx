@@ -9,9 +9,9 @@ const Header = () => {
   return (
     <header className="relative">
       <nav className="flex justify-between items-center p-4">
-        <div className="logo">
+        <Link to="/" className="logo">
           <img src={logo} alt="logo" className="h-20" />
-        </div>
+        </Link>
 
         <ul className="hidden lg:flex gap-10 items-center text-gray-700">
           <li className="hover:text-blue-500">
@@ -29,6 +29,9 @@ const Header = () => {
             >
               About EduPath
             </button>
+          </li>
+          <li className="hover:text-blue-500">
+            <Link to="/mentors">For Mentors</Link>
           </li>
           <li className="hover:text-blue-500">
             <button

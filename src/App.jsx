@@ -39,6 +39,7 @@ import AdminCourses from "./admin/pages/Courses.jsx";
 import AdminMentors from "./admin/pages/Mentors.jsx";
 import AdminReports from "./admin/pages/Reports.jsx";
 import AdminSettings from "./admin/pages/Settings.jsx";
+import MentorsLandingPage from "./pages/mentor/index.jsx";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/mentors" element={<MentorsLandingPage />} />
 
       <Route element={<PrivateRoute />}>
         <Route path="/dashboard" element={<DashboardLayout />}>
