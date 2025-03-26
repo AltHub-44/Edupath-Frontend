@@ -8,7 +8,7 @@ const AdminSidebar = () => {
   const navItems = [
     { path: "/admin-dashboard", label: "Dashboard", icon: "tabler:dashboard" },
     { path: "/admin-dashboard/users", label: "Users", icon: "tabler:users" },
-    { path: "/admin-dashboard/courses", label: "Courses", icon: "tabler:book" },
+    { path: "/admin-dashboard/courses", label: "Resources", icon: "tabler:book" },
     {
       path: "/admin-dashboard/mentors",
       label: "Mentors",
