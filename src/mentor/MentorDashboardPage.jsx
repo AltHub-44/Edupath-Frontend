@@ -1,532 +1,157 @@
-
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { format } from 'date-fns';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const MentorDashboardPage = () => {
-  const today = new Date();
-  
-  const mentees = [
-    { 
-      id: 1, 
-      name: "Alex Johnson", 
-      progress: 75, 
-      lastActive: "2023-08-05T14:30:00", 
-      nextSession: "2023-08-15T10:00:00",
-      avatar: "/lovable-uploads/63aab59d-bddb-43b1-963c-ab6f53489f3e.png",
-      course: "Web Development"
-    },
-    { 
-      id: 2, 
-      name: "Samantha Lee", 
-      progress: 42, 
-      lastActive: "2023-08-07T09:15:00", 
-      nextSession: "2023-08-12T15:30:00",
-      avatar: "https://i.pravatar.cc/150?img=32",
-      course: "Data Science"
-    },
-    { 
-      id: 3, 
-      name: "Michael Chen", 
-      progress: 89, 
-      lastActive: "2023-08-06T16:45:00", 
-      nextSession: "2023-08-18T11:00:00",
-      avatar: "https://i.pravatar.cc/150?img=68",
-      course: "Mobile App Development"
-    },
-    { 
-      id: 4, 
-      name: "Emily Wilson", 
-      progress: 35, 
-      lastActive: "2023-08-01T10:20:00", 
-      nextSession: "2023-08-10T14:00:00",
-      avatar: "https://i.pravatar.cc/150?img=47",
-      course: "UI/UX Design"
-    },
+  // Mock data for the dashboard
+  const stats = [
+    { label: 'Active Mentees', value: 12, icon: 'tabler:users', color: 'bg-blue-500' },
+    { label: 'Assignments to Review', value: 8, icon: 'tabler:clipboard-text', color: 'bg-purple-500' },
+    { label: 'Messages', value: 5, icon: 'tabler:message-circle', color: 'bg-green-500' },
+    { label: 'Upcoming Sessions', value: 3, icon: 'tabler:calendar', color: 'bg-amber-500' },
   ];
   
-  const pendingRequests = [
-    { 
-      id: 101, 
-      name: "Jordan Smith", 
-      message: "Looking for guidance in machine learning and AI.", 
-      date: "2023-08-04T11:20:00",
-      avatar: "https://i.pravatar.cc/150?img=51"
-    },
-    { 
-      id: 102, 
-      name: "Taylor Wright", 
-      message: "Need help with full-stack development concepts.", 
-      date: "2023-08-05T15:45:00",
-      avatar: "https://i.pravatar.cc/150?img=33"
-    },
+  const upcomingSessions = [
+    { id: 1, student: 'Jamie Chen', time: '10:00 AM - 11:00 AM', date: 'Today', topic: 'Project Review' },
+    { id: 2, student: 'Alex Smith', time: '2:30 PM - 3:30 PM', date: 'Today', topic: 'Career Guidance' },
+    { id: 3, student: 'Taylor Williams', time: '9:00 AM - 10:00 AM', date: 'Tomorrow', topic: 'Weekly Check-in' },
   ];
   
-  const sessions = [
-    { 
-      id: 201, 
-      mentee: "Alex Johnson", 
-      date: "2023-08-15T10:00:00", 
-      duration: 60,
-      topic: "Project Review",
-      avatar: "/lovable-uploads/63aab59d-bddb-43b1-963c-ab6f53489f3e.png"
-    },
-    { 
-      id: 202, 
-      mentee: "Samantha Lee", 
-      date: "2023-08-12T15:30:00", 
-      duration: 45,
-      topic: "Career Guidance",
-      avatar: "https://i.pravatar.cc/150?img=32"
-    },
-    { 
-      id: 203, 
-      mentee: "Emily Wilson", 
-      date: "2023-08-10T14:00:00", 
-      duration: 30,
-      topic: "Portfolio Review",
-      avatar: "https://i.pravatar.cc/150?img=47"
-    },
+  const pendingAssignments = [
+    { id: 1, title: 'JavaScript Basics Quiz', student: 'Jamie Chen', submitted: '2 days ago' },
+    { id: 2, title: 'React Component Project', student: 'Alex Smith', submitted: '1 day ago' },
+    { id: 3, title: 'API Integration Assignment', student: 'Robin Lee', submitted: '4 hours ago' },
+    { id: 4, title: 'UI/UX Design Mockup', student: 'Jordan Taylor', submitted: '3 days ago' },
   ];
   
-  const [activeTab, setActiveTab] = useState('overview');
+  const recentActivities = [
+    { type: 'review', message: 'You graded Jamie Chen\'s assignment', time: '2 hours ago' },
+    { type: 'session', message: 'Session with Sasha Johnson completed', time: '5 hours ago' },
+    { type: 'message', message: 'Alex Smith sent you a message', time: 'Yesterday' },
+    { type: 'resource', message: 'You uploaded a new resource: "Advanced React Hooks"', time: 'Yesterday' },
+  ];
   
-  const handleAcceptRequest = (id) => {
-    toast.success('Mentorship request accepted');
-    // Logic to accept request would go here
+  const activityIcons = {
+    review: 'tabler:clipboard-check',
+    session: 'tabler:video',
+    message: 'tabler:message-circle',
+    resource: 'tabler:file-upload',
   };
-  
-  const handleRejectRequest = (id) => {
-    toast.info('Mentorship request declined');
-    // Logic to reject request would go here
-  };
-  
-  return (
-    <div className="flex min-h-screen bg-gray-50">
 
+  return (
+    <div>
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-gray-800 mb-2">Mentor Dashboard</h1>
+        <p className="text-gray-600">Welcome back, Michelle. Here's what's happening with your mentees today.</p>
+      </div>
       
-      <div className={`flex-1`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-8 gap-4">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {stats.map((stat, index) => (
+          <div key={index} className="bg-white rounded-lg shadow p-6 flex items-center">
+            <div className={`${stat.color} text-white p-3 rounded-lg mr-4`}>
+              <Icon icon={stat.icon} className="h-6 w-6" />
+            </div>
             <div>
-              <h1 className="text-2xl font-bold">Mentor Dashboard</h1>
-              <p className="text-gray-500">{format(today, 'MMMM dd, yyyy')}</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="relative">
-                <button className="relative p-2 rounded-full hover:bg-gray-100">
-                  <Icon icon="tabler:bell" className="w-5 h-5" />
-                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
-              </div>
-              <div className="h-10 w-10 rounded-full overflow-hidden border border-gray-200">
-                <img 
-                  src="/lovable-uploads/63aab59d-bddb-43b1-963c-ab6f53489f3e.png" 
-                  alt="Mentor" 
-                  className="h-full w-full object-cover"
-                />
-              </div>
+              <h3 className="text-2xl font-bold">{stat.value}</h3>
+              <p className="text-gray-600 text-sm">{stat.label}</p>
             </div>
           </div>
-          
-          {/* Navigation Tabs */}
-          <div className="mb-6 border-b border-gray-200">
-            <nav className="flex flex-wrap -mb-px">
-              <button 
-                onClick={() => setActiveTab('overview')}
-                className={`mr-4 py-4 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === 'overview' 
-                    ? 'border-blue-500 text-blue-600' 
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                Overview
-              </button>
-              <button 
-                onClick={() => setActiveTab('mentees')}
-                className={`mr-4 py-4 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === 'mentees' 
-                    ? 'border-blue-500 text-blue-600' 
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                My Mentees
-              </button>
-              <button 
-                onClick={() => setActiveTab('requests')}
-                className={`mr-4 py-4 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === 'requests' 
-                    ? 'border-blue-500 text-blue-600' 
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                Requests
-                {pendingRequests.length > 0 && (
-                  <span className="ml-2 inline-flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 text-blue-800 text-xs">
-                    {pendingRequests.length}
-                  </span>
-                )}
-              </button>
-              <button 
-                onClick={() => setActiveTab('schedule')}
-                className={`mr-4 py-4 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === 'schedule' 
-                    ? 'border-blue-500 text-blue-600' 
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                Schedule
-              </button>
-            </nav>
+        ))}
+      </div>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        {/* Upcoming Sessions */}
+        <div className="bg-white rounded-lg shadow">
+          <div className="p-4 border-b flex justify-between items-center">
+            <h2 className="font-bold text-lg text-gray-800">Upcoming Sessions</h2>
+            <Link to="/mentor-dashboard/schedule" className="text-purple-600 hover:text-purple-800 text-sm flex items-center">
+              View All 
+              <Icon icon="tabler:chevron-right" className="h-4 w-4 ml-1" />
+            </Link>
           </div>
-          
-          {/* Content based on active tab */}
-          {activeTab === 'overview' && (
-            <div className="space-y-6">
-              {/* Stats Row */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white p-6 rounded-xl shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-blue-100 p-3 rounded-full">
-                      <Icon icon="tabler:users" className="h-6 w-6 text-blue-600" />
-                    </div>
+          <div className="p-4">
+            {upcomingSessions.length > 0 ? (
+              <div className="divide-y divide-gray-100">
+                {upcomingSessions.map(session => (
+                  <div key={session.id} className="py-3 flex justify-between items-center">
                     <div>
-                      <p className="text-sm text-gray-500">Total Mentees</p>
-                      <p className="text-2xl font-bold">{mentees.length}</p>
+                      <h3 className="font-medium text-gray-800">{session.student}</h3>
+                      <p className="text-gray-600 text-sm">{session.topic}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-gray-800">{session.date}</p>
+                      <p className="text-gray-600 text-sm">{session.time}</p>
                     </div>
                   </div>
-                </div>
-                
-                <div className="bg-white p-6 rounded-xl shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-purple-100 p-3 rounded-full">
-                      <Icon icon="tabler:clock" className="h-6 w-6 text-purple-600" />
-                    </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-6">
+                <p className="text-gray-500">No upcoming sessions.</p>
+              </div>
+            )}
+          </div>
+        </div>
+        
+        {/* Pending Assignments */}
+        <div className="bg-white rounded-lg shadow">
+          <div className="p-4 border-b flex justify-between items-center">
+            <h2 className="font-bold text-lg text-gray-800">Pending Assignments</h2>
+            <Link to="/mentor-dashboard/assignments" className="text-purple-600 hover:text-purple-800 text-sm flex items-center">
+              View All 
+              <Icon icon="tabler:chevron-right" className="h-4 w-4 ml-1" />
+            </Link>
+          </div>
+          <div className="p-4">
+            {pendingAssignments.length > 0 ? (
+              <div className="divide-y divide-gray-100">
+                {pendingAssignments.map(assignment => (
+                  <div key={assignment.id} className="py-3 flex justify-between items-center">
                     <div>
-                      <p className="text-sm text-gray-500">Upcoming Sessions</p>
-                      <p className="text-2xl font-bold">{sessions.length}</p>
+                      <h3 className="font-medium text-gray-800">{assignment.title}</h3>
+                      <p className="text-gray-600 text-sm">By {assignment.student}</p>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="text-gray-500 text-sm mr-3">{assignment.submitted}</span>
+                      <button className="text-purple-600 hover:text-purple-800">
+                        <Icon icon="tabler:external-link" className="h-5 w-5" />
+                      </button>
                     </div>
                   </div>
-                </div>
-                
-                <div className="bg-white p-6 rounded-xl shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-green-100 p-3 rounded-full">
-                      <Icon icon="tabler:user-plus" className="h-6 w-6 text-green-600" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500">Pending Requests</p>
-                      <p className="text-2xl font-bold">{pendingRequests.length}</p>
-                    </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-6">
+                <p className="text-gray-500">No pending assignments.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      
+      {/* Recent Activity */}
+      <div className="bg-white rounded-lg shadow">
+        <div className="p-4 border-b">
+          <h2 className="font-bold text-lg text-gray-800">Recent Activity</h2>
+        </div>
+        <div className="p-4">
+          {recentActivities.length > 0 ? (
+            <div className="divide-y divide-gray-100">
+              {recentActivities.map((activity, index) => (
+                <div key={index} className="py-3 flex items-start">
+                  <div className="bg-gray-100 p-2 rounded-lg mr-3">
+                    <Icon icon={activityIcons[activity.type]} className="h-5 w-5 text-gray-600" />
+                  </div>
+                  <div>
+                    <p className="text-gray-800">{activity.message}</p>
+                    <p className="text-gray-500 text-sm">{activity.time}</p>
                   </div>
                 </div>
-              </div>
-              
-              {/* Upcoming Sessions */}
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold mb-4">Upcoming Sessions</h2>
-                <div className="space-y-4">
-                  {sessions.map((session) => (
-                    <div key={session.id} className="flex items-center justify-between p-4 border border-gray-100 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full overflow-hidden">
-                          <img src={session.avatar} alt={session.mentee} className="h-full w-full object-cover" />
-                        </div>
-                        <div>
-                          <h3 className="font-medium">{session.mentee}</h3>
-                          <p className="text-sm text-gray-500">{session.topic}</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-medium">{format(new Date(session.date), 'MMM dd, h:mm a')}</p>
-                        <p className="text-sm text-gray-500">{session.duration} minutes</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                {sessions.length === 0 && (
-                  <p className="text-gray-500 text-center py-4">No upcoming sessions</p>
-                )}
-              </div>
-              
-              {/* Recent Activity */}
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold mb-4">Recent Mentee Activity</h2>
-                <div className="space-y-4">
-                  {mentees
-                    .sort((a, b) => new Date(b.lastActive) - new Date(a.lastActive))
-                    .slice(0, 3)
-                    .map((mentee) => (
-                      <div key={mentee.id} className="flex items-center justify-between p-4 border border-gray-100 rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <div className="h-10 w-10 rounded-full overflow-hidden">
-                            <img src={mentee.avatar} alt={mentee.name} className="h-full w-full object-cover" />
-                          </div>
-                          <div>
-                            <h3 className="font-medium">{mentee.name}</h3>
-                            <p className="text-sm text-gray-500">{mentee.course}</p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-sm text-gray-500">Last active {format(new Date(mentee.lastActive), 'MMM dd, h:mm a')}</p>
-                          <div className="mt-1 flex items-center gap-2">
-                            <div className="w-full bg-gray-200 rounded-full h-1.5">
-                              <div 
-                                className="bg-blue-600 h-1.5 rounded-full" 
-                                style={{ width: `${mentee.progress}%` }}
-                              ></div>
-                            </div>
-                            <span className="text-xs text-gray-500">{mentee.progress}%</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              </div>
+              ))}
             </div>
-          )}
-          
-          {activeTab === 'mentees' && (
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
-                <h2 className="text-lg font-semibold">My Mentees</h2>
-                <div className="relative w-full sm:w-64">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Icon icon="tabler:search" className="h-4 w-4 text-gray-400" />
-                  </div>
-                  <input
-                    type="text"
-                    className="block w-full pl-9 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    placeholder="Search mentees..."
-                  />
-                </div>
-              </div>
-              
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Mentee
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Course
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Progress
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Next Session
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Last Active
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {mentees.map((mentee) => (
-                      <tr key={mentee.id}>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="flex items-center">
-                            <div className="h-10 w-10 rounded-full overflow-hidden">
-                              <img src={mentee.avatar} alt={mentee.name} className="h-full w-full object-cover" />
-                            </div>
-                            <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">{mentee.name}</div>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">{mentee.course}</div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="flex items-center gap-2">
-                            <div className="w-full bg-gray-200 rounded-full h-1.5">
-                              <div 
-                                className={`h-1.5 rounded-full ${
-                                  mentee.progress > 75 ? 'bg-green-500' : 
-                                  mentee.progress > 40 ? 'bg-blue-500' : 'bg-yellow-500'
-                                }`} 
-                                style={{ width: `${mentee.progress}%` }}
-                              ></div>
-                            </div>
-                            <span className="text-xs text-gray-500">{mentee.progress}%</span>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
-                            {format(new Date(mentee.nextSession), 'MMM dd, h:mm a')}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
-                            {format(new Date(mentee.lastActive), 'MMM dd, h:mm a')}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <Link to={`/chat-with-mentor?mentee=${mentee.id}`} className="text-blue-600 hover:text-blue-900 mr-3">
-                            Message
-                          </Link>
-                          <Link to={`/mentor-mentee/${mentee.id}`} className="text-blue-600 hover:text-blue-900">
-                            View
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              
-              {mentees.length === 0 && (
-                <p className="text-gray-500 text-center py-4">No mentees found</p>
-              )}
-            </div>
-          )}
-          
-          {activeTab === 'requests' && (
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold mb-6">Mentorship Requests</h2>
-              
-              {pendingRequests.length > 0 ? (
-                <div className="space-y-4">
-                  {pendingRequests.map((request) => (
-                    <div key={request.id} className="border border-gray-200 rounded-lg p-4">
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div className="flex items-center gap-3">
-                          <div className="h-12 w-12 rounded-full overflow-hidden">
-                            <img src={request.avatar} alt={request.name} className="h-full w-full object-cover" />
-                          </div>
-                          <div>
-                            <h3 className="font-medium text-lg">{request.name}</h3>
-                            <p className="text-sm text-gray-500">
-                              Requested {format(new Date(request.date), 'MMM dd, yyyy')}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex gap-2 w-full sm:w-auto">
-                          <button 
-                            onClick={() => handleAcceptRequest(request.id)}
-                            className="flex-1 sm:flex-none px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                          >
-                            Accept
-                          </button>
-                          <button 
-                            onClick={() => handleRejectRequest(request.id)}
-                            className="flex-1 sm:flex-none px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                          >
-                            Decline
-                          </button>
-                        </div>
-                      </div>
-                      <div className="mt-4 p-3 bg-gray-50 rounded-md">
-                        <p className="text-gray-700">{request.message}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-8">
-                  <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
-                    <Icon icon="tabler:inbox" className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <h3 className="mt-2 text-sm font-medium text-gray-900">No pending requests</h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    You don't have any pending mentorship requests at this time.
-                  </p>
-                </div>
-              )}
-            </div>
-          )}
-          
-          {activeTab === 'schedule' && (
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
-                <h2 className="text-lg font-semibold">My Schedule</h2>
-                <button className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                  <Icon icon="tabler:plus" className="w-4 h-4 inline-block mr-1" />
-                  Add Availability
-                </button>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-medium mb-3">Upcoming Sessions</h3>
-                  {sessions.length > 0 ? (
-                    <div className="space-y-3">
-                      {sessions.map((session) => (
-                        <div key={session.id} className="flex items-center justify-between bg-white p-3 rounded-md shadow-sm">
-                          <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-full overflow-hidden">
-                              <img src={session.avatar} alt={session.mentee} className="h-full w-full object-cover" />
-                            </div>
-                            <div>
-                              <p className="font-medium">{session.mentee}</p>
-                              <p className="text-sm text-gray-500">{session.topic}</p>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-sm font-medium">{format(new Date(session.date), 'MMM dd, h:mm a')}</p>
-                            <div className="flex items-center gap-2 mt-1">
-                              <button className="text-xs text-blue-600 hover:text-blue-800">
-                                Reschedule
-                              </button>
-                              <span className="text-gray-300">|</span>
-                              <button className="text-xs text-red-600 hover:text-red-800">
-                                Cancel
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-gray-500 text-center py-2">No upcoming sessions</p>
-                  )}
-                </div>
-                
-                <div>
-                  <h3 className="font-medium mb-3">My Availability</h3>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-white p-3 rounded-md shadow-sm">
-                        <div className="flex justify-between items-center">
-                          <h4 className="font-medium">Mondays</h4>
-                          <button className="text-gray-400 hover:text-gray-500">
-                            <Icon icon="tabler:pencil" className="w-4 h-4" />
-                          </button>
-                        </div>
-                        <p className="text-sm text-gray-600 mt-1">9:00 AM - 12:00 PM</p>
-                      </div>
-                      
-                      <div className="bg-white p-3 rounded-md shadow-sm">
-                        <div className="flex justify-between items-center">
-                          <h4 className="font-medium">Wednesdays</h4>
-                          <button className="text-gray-400 hover:text-gray-500">
-                            <Icon icon="tabler:pencil" className="w-4 h-4" />
-                          </button>
-                        </div>
-                        <p className="text-sm text-gray-600 mt-1">1:00 PM - 5:00 PM</p>
-                      </div>
-                      
-                      <div className="bg-white p-3 rounded-md shadow-sm">
-                        <div className="flex justify-between items-center">
-                          <h4 className="font-medium">Fridays</h4>
-                          <button className="text-gray-400 hover:text-gray-500">
-                            <Icon icon="tabler:pencil" className="w-4 h-4" />
-                          </button>
-                        </div>
-                        <p className="text-sm text-gray-600 mt-1">10:00 AM - 3:00 PM</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          ) : (
+            <div className="text-center py-6">
+              <p className="text-gray-500">No recent activity.</p>
             </div>
           )}
         </div>

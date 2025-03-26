@@ -1,11 +1,9 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
 const MentorHeader = () => {
   return (
-    <header className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
+    <header className="bg-white shadow-sm py-4 px-6 flex justify-end items-center">
       <div className="flex items-center md:hidden">
         <h1 className="text-xl font-bold text-purple-700">Mentor Portal</h1>
       </div>

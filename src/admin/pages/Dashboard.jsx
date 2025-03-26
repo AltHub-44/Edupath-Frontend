@@ -3,7 +3,6 @@ import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
-  // Mock data for the dashboard
   const stats = [
     { label: 'Total Users', value: 2458, change: '+12%', icon: 'tabler:users', color: 'bg-blue-500' },
     { label: 'Active Courses', value: 42, change: '+3', icon: 'tabler:book', color: 'bg-green-500' },
@@ -25,23 +24,6 @@ const AdminDashboard = () => {
     { id: 4, title: 'Python for Data Science', students: 287, rating: 4.6 },
   ];
   
-  const systemNotifications = [
-    { type: 'warning', message: 'Storage space is running low (15% remaining)', time: '2 hours ago' },
-    { type: 'success', message: 'System update completed successfully', time: '1 day ago' },
-    { type: 'error', message: 'Failed login attempts detected from IP 192.168.1.4', time: '2 days ago' },
-  ];
-  
-  const notificationIcons = {
-    warning: 'tabler:alert-triangle',
-    success: 'tabler:circle-check',
-    error: 'tabler:alert-circle',
-  };
-  
-  const notificationColors = {
-    warning: 'text-amber-500',
-    success: 'text-green-500',
-    error: 'text-red-500',
-  };
 
   return (
     <div>
@@ -50,7 +32,6 @@ const AdminDashboard = () => {
         <p className="text-gray-600">Welcome back, Alex. Here's what's happening with your platform today.</p>
       </div>
       
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((stat, index) => (
           <div key={index} className="bg-white rounded-lg shadow p-6">
@@ -69,7 +50,6 @@ const AdminDashboard = () => {
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        {/* Recent Users */}
         <div className="bg-white rounded-lg shadow">
           <div className="p-4 border-b flex justify-between items-center">
             <h2 className="font-bold text-lg text-gray-800">Recent Users</h2>
@@ -125,7 +105,6 @@ const AdminDashboard = () => {
           </div>
         </div>
         
-        {/* Popular Courses */}
         <div className="bg-white rounded-lg shadow">
           <div className="p-4 border-b flex justify-between items-center">
             <h2 className="font-bold text-lg text-gray-800">Popular Courses</h2>
@@ -160,36 +139,6 @@ const AdminDashboard = () => {
         </div>
       </div>
       
-      {/* System Notifications */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-4 border-b">
-          <h2 className="font-bold text-lg text-gray-800">System Notifications</h2>
-        </div>
-        <div className="p-4">
-          {systemNotifications.length > 0 ? (
-            <div className="divide-y divide-gray-100">
-              {systemNotifications.map((notification, index) => (
-                <div key={index} className="py-3 flex items-start">
-                  <div className={`p-2 rounded-lg mr-3 ${notificationColors[notification.type]} bg-opacity-10`}>
-                    <Icon icon={notificationIcons[notification.type]} className={`h-5 w-5 ${notificationColors[notification.type]}`} />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-gray-800">{notification.message}</p>
-                    <p className="text-gray-500 text-sm">{notification.time}</p>
-                  </div>
-                  <button className="text-gray-400 hover:text-gray-600">
-                    <Icon icon="tabler:x" className="h-5 w-5" />
-                  </button>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-6">
-              <p className="text-gray-500">No system notifications.</p>
-            </div>
-          )}
-        </div>
-      </div>
     </div>
   );
 };

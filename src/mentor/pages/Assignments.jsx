@@ -1,7 +1,6 @@
 
-import { Icon } from '@iconify/react';
-import MentorLayout from '../components/MentorLayout';
 import { useState } from 'react';
+import { Icon } from '@iconify/react';
 
 const MentorAssignments = () => {
   const [filter, setFilter] = useState('pending');

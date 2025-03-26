@@ -40,6 +40,7 @@ import AdminMentors from "./admin/pages/Mentors.jsx";
 import AdminReports from "./admin/pages/Reports.jsx";
 import AdminSettings from "./admin/pages/Settings.jsx";
 import MentorsLandingPage from "./pages/mentor/index.jsx";
+import MentorChat from "./mentor/pages/Chat.jsx";
 
 function App() {
   return (
@@ -78,10 +79,12 @@ function App() {
         <Route index element={<MentorDashboardPage />} />
         <Route path="mentees" element={<MentorMentees />} />
         <Route path="assignments" element={<MentorAssignments />} />
+        <Route path="assignment/:assignmentId" element={<AssignmentDetailPage />} />
         <Route path="schedule" element={<MentorSchedule />} />
         <Route path="resources" element={<MentorResources />} />
         <Route path="profile" element={<MentorProfile />} />
         <Route path="settings" element={<MentorSettings />} />
+        <Route path="chat" element={<MentorChat />} />
       </Route>
 
       {/* Admin Dashboard Routes */}
