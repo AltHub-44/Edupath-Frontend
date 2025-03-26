@@ -24,7 +24,7 @@ const MentorsLandingPage = () => {
                   to="/mentor-dashboard"
                   className="bg-blue-600 text-white text-center px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium"
                 >
-                  Join as a mentor
+                  Join as a mentor 
                 </Link>
                 <Link
                   to="/mentor-dashboard"
@@ -254,7 +254,7 @@ const MentorsLandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 bg-blue400 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Make a Difference?
@@ -265,7 +265,7 @@ const MentorsLandingPage = () => {
           </p>
           <Link
             to="/mentor-dashboard"
-            className="bg-white text-blue-600 px-8 py-4 rounded-md hover:bg-blue-50 transition-colors font-medium text-lg inline-block"
+            className="bg-white text-blue400 px-8 py-4 rounded-md hover:bg-blue-50 transition-colors font-medium text-lg inline-block"
           >
             Apply to become a mentor
           </Link>

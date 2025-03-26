@@ -41,11 +41,11 @@ const Faqs = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row mt-20 px-4 md:px-20 gap-16">
+    <div className="flex flex-col lg:flex-row mt-28 px-4 md:px-20 gap-16">
       <div className="lg:w-1/3 space-y-4">
-        <h1 className="font-epilogue text-4xl font-bold text-blue200">FAQs</h1>
-        <p className="text-gray-600 lg:text-2xl">
-          If you don't find an answer to your question, feel free to email us.
+        <h1 className="font-epilogue text-4xl font-bold text-blue100">FAQs</h1>
+        <p className="text-gray-600 lg:text-xl">
+          If you don&apos;t find an answer to your question, feel free to email us.
         </p>
         <img src={faqImage} alt="FAQ" className="w-full max-w-sm mt-10 md:hidden lg:block" />
       </div>

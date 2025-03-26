@@ -133,7 +133,7 @@ const MentorChat = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-13rem)] flex flex-col">
+    <div className=" flex flex-col">
       <div className="mb-6 flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-800">Messages</h1>
         <button 
@@ -233,12 +233,6 @@ const MentorChat = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <button className="text-gray-600 hover:text-gray-900 p-2">
-                    <Icon icon="tabler:phone" className="h-5 w-5" />
-                  </button>
-                  <button className="text-gray-600 hover:text-gray-900 p-2">
-                    <Icon icon="tabler:video" className="h-5 w-5" />
-                  </button>
                   <button className="text-gray-600 hover:text-gray-900 p-2">
                     <Icon icon="tabler:dots-vertical" className="h-5 w-5" />
                   </button>

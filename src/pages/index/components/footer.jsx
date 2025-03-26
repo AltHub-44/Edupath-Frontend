@@ -10,7 +10,7 @@ const Footer = () => {
   const { scrollToSection } = useMenu();
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 md:gap-0 bg-blue100 text-white justify-between p-10 mt-20">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 md:gap-0 bg-blue300 text-white justify-between p-10 mt-20">
       <section className="" id="contact">
         <h2 className="font-semibold text-lg md:text-md">Edupath</h2>
         <div className="mt-1 mb-3 md:my-3 text-gray100 text-sm">

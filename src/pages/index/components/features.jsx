@@ -6,10 +6,10 @@ import icon3 from "@/assets/icon3.png";
 const Features = () => (
   <div className="mt-24" id="about">
     <section className="flex flex-col items-center">
-      <h1 className="font-epilogue text-blue200 text-4xl lg:text-5xl font-semibold">
+      <h1 className="font-epilogue text-blue100 text-4xl lg:text-4xl font-semibold">
         Our Features
       </h1>
-      <h4 className="text-md lg:text-lg text-gray200 mt-1 md:mt-0">
+      <h4 className="text-md lg:text-md text-gray200 mt-1 md:mt-0">
         How We Help You Succeed
       </h4>
     </section>

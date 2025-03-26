@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div className="flex flex-col lg:flex-row items-center px-4 pt-7 md:px-6 lg:p-20 lg:px-28 bg-[#eff4ff] rounded-lg">
       <div className="lg:w-6/12 ">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-10 md:leading-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-blue400 mb-4 leading-10 md:leading-12">
           Tailored learning path to boost{" "}
           <span className="text-blue-500">academic success</span>
         </h1>
