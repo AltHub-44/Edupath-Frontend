@@ -78,10 +78,11 @@ const AdminSidebar = () => {
               <li key={item.path}>
                 <NavLink
                   to={item.path}
+                  end
                   className={({ isActive }) =>
                     `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                       isActive
-                        ? "bg-blue-600 text-white font-medium"
+                        ? "bg-gray-700 text-white font-medium"
                         : "text-gray-300 hover:bg-gray-700"
                     }`
                   }
