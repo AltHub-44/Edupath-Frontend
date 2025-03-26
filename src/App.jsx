@@ -21,6 +21,25 @@ import QuizzesPage from "./pages/dashboard/quiz/QuizzesPage.jsx";
 import Assignments from "./pages/dashboard/assignment/Assignment.jsx";
 import AssignmentDetailPage from "./pages/dashboard/assignment/components/AssignmentDetailsPage.jsx";
 
+// Mentor Dashboard
+import MentorLayout from "./mentor/components/MentorLayout.jsx";
+import MentorMentees from "./mentor/pages/Mentees.jsx";
+import MentorAssignments from "./mentor/pages/Assignments.jsx";
+import MentorSchedule from "./mentor/pages/Schedule.jsx";
+import MentorResources from "./mentor/pages/Resources.jsx";
+import MentorProfile from "./mentor/pages/Profile.jsx";
+import MentorSettings from "./mentor/pages/Settings.jsx";
+import MentorDashboardPage from "./mentor/MentorDashboardPage.jsx";
+
+// Admin Dashboard
+import AdminLayout from "./admin/components/AdminLayout.jsx";
+import AdminDashboard from "./admin/pages/Dashboard.jsx";
+import AdminUsers from "./admin/pages/Users.jsx";
+import AdminCourses from "./admin/pages/Courses.jsx";
+import AdminMentors from "./admin/pages/Mentors.jsx";
+import AdminReports from "./admin/pages/Reports.jsx";
+import AdminSettings from "./admin/pages/Settings.jsx";
+
 function App() {
   return (
     <Routes>
@@ -45,9 +64,32 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="assignments" element={<Assignments />} />
-          <Route path="assignment/:assignmentId" element={<AssignmentDetailPage />} />
-
+          <Route
+            path="assignment/:assignmentId"
+            element={<AssignmentDetailPage />}
+          />
         </Route>
+      </Route>
+
+      {/* Mentor Dashboard Nested Routes */}
+      <Route path="mentor-dashboard" element={<MentorLayout />}>
+        <Route index element={<MentorDashboardPage />} />
+        <Route path="mentees" element={<MentorMentees />} />
+        <Route path="assignments" element={<MentorAssignments />} />
+        <Route path="schedule" element={<MentorSchedule />} />
+        <Route path="resources" element={<MentorResources />} />
+        <Route path="profile" element={<MentorProfile />} />
+        <Route path="settings" element={<MentorSettings />} />
+      </Route>
+
+      {/* Admin Dashboard Routes */}
+      <Route path="/admin-dashboard" element={<AdminLayout />}>
+        <Route index element={<AdminDashboard />} />
+        <Route path="users" element={<AdminUsers />} />
+        <Route path="courses" element={<AdminCourses />} />
+        <Route path="mentors" element={<AdminMentors />} />
+        <Route path="reports" element={<AdminReports />} />
+        <Route path="settings" element={<AdminSettings />} />
       </Route>
     </Routes>
   );
