@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import logo from "@/assets/logo.png";
 import useMenu from "../../../hooks/useMenu";
 
 const Header = () => {
   const { menuOpen, toggleMenu, scrollToSection } = useMenu();
+  const location = useLocation();
+
+  const isActive = (path) =>
+    location.pathname === path
+      ? "text-blue300 font-semibold border-b-2 border-blue300"
+      : "text-gray-700 ";
 
   return (
     <header className="relative">
@@ -13,8 +19,8 @@ const Header = () => {
           <img src={logo} alt="logo" className="h-20" />
         </Link>
 
-        <ul className="hidden lg:flex gap-10 items-center text-gray-700">
-          <li className="hover:text-blue-500">
+        <ul className="hidden lg:flex gap-10 items-center text-lg font-epilogue">
+          <li className={`hover:text-blue-500 ${isActive("/")}`}>
             <button
               className="cursor-pointer"
               onClick={() => scrollToSection("home")}
@@ -22,7 +28,7 @@ const Header = () => {
               Home
             </button>
           </li>
-          <li className="hover:text-blue-500">
+          <li className={`hover:text-blue-500 ${isActive("/about")}`}>
             <button
               className="cursor-pointer"
               onClick={() => scrollToSection("about")}
@@ -30,10 +36,10 @@ const Header = () => {
               About EduPath
             </button>
           </li>
-          <li className="hover:text-blue-500">
+          <li className={`hover:text-blue-500 ${isActive("/mentors")}`}>
             <Link to="/mentors">For Mentors</Link>
           </li>
-          <li className="hover:text-blue-500">
+          <li className={`hover:text-blue-500 ${isActive("/contact")}`}>
             <button
               className="cursor-pointer"
               onClick={() => scrollToSection("contact")}
@@ -46,13 +52,17 @@ const Header = () => {
         <div className="hidden lg:flex gap-5 items-center">
           <Link
             to="/login"
-            className="border border-gray-300 hover:bg-blue-500 hover:text-white py-2 px-4 rounded-md"
+            className={`border border-gray-300 py-2 px-4 rounded-md ${isActive(
+              "/login"
+            )}`}
           >
             Log in
           </Link>
           <Link
             to="/signup"
-            className="bg-blue-500 hover:border hover:border-blue-500 hover:text-blue-500 hover:bg-white text-white py-2 rounded-lg px-3 flex items-center gap-3"
+            className={`bg-blue-500 text-white py-2 px-3 rounded-lg flex items-center gap-3 ${isActive(
+              "/signup"
+            )}`}
           >
             Get Started <span>→</span>
           </Link>
@@ -63,6 +73,7 @@ const Header = () => {
         </button>
       </nav>
 
+      {/* Mobile Menu */}
       <div
         className={`fixed inset-0 bg-white shadow-lg transform ${
           menuOpen ? "translate-x-0" : "translate-x-full"
@@ -76,19 +87,19 @@ const Header = () => {
         </button>
 
         <button
-          className="text-gray-700 hover:text-blue-500"
+          className={`hover:text-blue-500 ${isActive("/")}`}
           onClick={() => scrollToSection("home")}
         >
           Home
         </button>
         <button
-          className="text-gray-700 hover:text-blue-500"
+          className={`hover:text-blue-500 ${isActive("/about")}`}
           onClick={() => scrollToSection("about")}
         >
           About EduPath
         </button>
         <button
-          className="text-gray-700 hover:text-blue-500"
+          className={`hover:text-blue-500 ${isActive("/contact")}`}
           onClick={() => scrollToSection("contact")}
         >
           Contact Us
@@ -96,13 +107,17 @@ const Header = () => {
 
         <Link
           to="/login"
-          className="border border-gray-300 hover:bg-blue-500 hover:text-white py-2 px-4 rounded-md"
+          className={`border border-gray-300 py-2 px-4 rounded-md ${isActive(
+            "/login"
+          )}`}
         >
           Log in
         </Link>
         <Link
           to="/signup"
-          className="bg-blue-500 text-white hover:border hover:border-blue-500 hover:text-blue-500 hover:bg-white py-2 px-4 rounded-lg"
+          className={`bg-blue-500 text-white py-2 px-4 rounded-lg ${isActive(
+            "/signup"
+          )}`}
         >
           Get Started
         </Link>

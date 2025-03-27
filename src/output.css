@@ -1174,6 +1174,9 @@
   .border-blue-500 {
     border-color: var(--color-blue-500);
   }
+  .border-blue300 {
+    border-color: var(--color-blue300);
+  }
   .border-gray-100 {
     border-color: var(--color-gray-100);
   }
