@@ -10,26 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: ⬇️ Checkout Code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: 📦 Install Dependencies
         run: npm install
 
-      - name: Build project
+      - name: 🛠️ Build React App
         run: npm run build
 
-      - name: Copy build files to EC2
-        uses: appleboy/scp-action@v0.1.7
+      - name: 🔐 Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          port: ${{ secrets.EC2_PORT || 22 }}
-          source: "dist/*"
-          target: "/home/ubuntu/Frontend-Files/Edupath-Frontend/dist"
+          ssh-private-key: ${{ secrets.EC2_KEY }}
+
+      - name: 📤 Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} '
+            rm -rf /home/ubuntu/Frontend-Files/Edupath-Frontend/dist &&
+            mkdir -p /home/ubuntu/Frontend-Files/Edupath-Frontend/dist
+          '
+          scp -r ./dist/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ubuntu/Frontend-Files/Edupath-Frontend/dist/
+  
